@@ -1,0 +1,40 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+body{
+    background: rgb(21,236,234);
+    background: linear-gradient(0deg, rgba(21,236,234,1) 19%, rgba(101,127,255,1) 100%);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+header{
+    background-color: aliceblue;
+    margin-bottom: 20px;
+}
+
+
+.img_banner{
+    height: 280px;
+}
+
+#myCarousel{
+    height: 400px;
+}
+
+.carousel-item{
+    height: 360px;
+}
+
+.carousel-caption{
+    justify-content: center;
+    align-items: center;
+}
+
+.baner_info{
+    margin: 30px;
+}
