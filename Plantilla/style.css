@@ -18,6 +18,7 @@ header{
 }
 
 
+
 .img_banner{
     height: 280px;
 }
@@ -37,4 +38,52 @@ header{
 
 .baner_info{
     margin: 30px;
+}
+
+
+
+
+.cont_img{
+    width:100%;
+    height:225px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cont_img img{
+    height: 100%;
+    transition: scale 1s;
+    padding: 10px;
+}
+
+.cont_img img:hover{
+    scale: 1.1;
+}
+
+
+@media (max-width: 800px){
+
+    
+    #myCarousel,.carousel-item{
+        height: 450px;
+    }
+
+    .carousel-caption{
+        flex-direction: column;
+    }
+
+    .img_banner{
+        height: 190px;
+    }
+
+    .baner_info{
+        margin: 5px;
+    }
+
+    #banner .btn{
+        font-size: 1rem;
+    }
+    
 }
