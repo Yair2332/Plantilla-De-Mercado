@@ -1,69 +1,74 @@
-*{
+* {
     margin: 0%;
     padding: 0%;
     box-sizing: border-box;
 }
 
-body{
-    background: rgb(21,236,234);
-    background: linear-gradient(0deg, rgba(21,236,234,1) 19%, rgba(101,127,255,1) 100%);
+body {
+    background: rgb(21, 236, 234);
+    background: linear-gradient(0deg, rgba(21, 236, 234, 1) 19%, rgba(101, 127, 255, 1) 100%);
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    padding-top: 80px;
 }
 
-header{
+header {
     background-color: aliceblue;
     margin-bottom: 20px;
+    position: fixed;
+    top: 0px;
+    z-index: 100;
 }
 
 /*SECCION DE BANNER*/
 
-.img_banner{
+.img_banner {
     height: 280px;
 }
 
-#myCarousel{
+#myCarousel {
     height: 400px;
 }
 
-.carousel-item{
+.carousel-item {
     height: 360px;
 }
 
-.carousel-caption{
+.carousel-caption {
     justify-content: center;
     align-items: center;
 }
 
-.baner_info{
+.baner_info {
     margin: 30px;
 }
 
 
-@media (max-width: 800px){
+@media (max-width: 800px) {
 
-    
-    #myCarousel,.carousel-item{
+
+    #myCarousel,
+    .carousel-item {
         height: 450px;
     }
 
-    .carousel-caption{
+    .carousel-caption {
         flex-direction: column;
     }
 
-    .img_banner{
+    .img_banner {
         height: 190px;
     }
 
-    .baner_info{
+    .baner_info {
         margin: 5px;
     }
 
-    #banner .btn{
+    #banner .btn {
         font-size: 1rem;
     }
-    
+
 }
 
 
@@ -71,58 +76,52 @@ header{
 /*SECCION DE PRODUCTOS*/
 
 
-.producto{
-    box-shadow: 0px 0px 5px rgba(13, 140, 214, 0.548);
+.producto {
     font-weight: bolder;
     font-size: 1.2rem;
     color: rgb(83, 83, 83);
 }
 
-.producto:hover{
+.producto:hover {
     color: rgba(0, 0, 255, 0.644);
     font-weight: bolder;
 }
 
-.cont_img{
-    width:100%;
-    height:225px;
+.cont_img {
+    width: 100%;
+    height: 225px;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.cont_img img{
+.cont_img img {
     height: 100%;
     transition: scale 1s;
     padding: 10px;
 }
 
-.cont_img img:hover{
+.cont_img img:hover {
     scale: 1.1;
 }
 
-@media (max-width: 800px){
-    .producto{
-        height: 300px;
-    }
-}
 
 
 
-/*BOTON MODAL*/
+/*MODAL*/
 
-#btn_modal{
+#btn_modal {
     display: none;
 }
 
-#contenedor_btn{
+#contenedor_btn {
     display: flex;
     height: 110px;
     overflow-x: auto;
 }
 
-#contenedor_btn button{
+#contenedor_btn button {
     height: 90px;
     border: none;
     margin: 5px;
@@ -130,4 +129,58 @@ header{
 
 #contenedor_btn .cont_img img {
     padding: 5px;
+}
+
+#collapseExample {
+    position: absolute;
+    top: 56px;
+    right: 12px;
+    width: 256px;
+}
+
+@media (max-width: 992px) {
+    #btn_carro {
+        z-index: 200;
+        position: absolute;
+        bottom: -44px;
+        right: 9px;
+    }
+
+    #collapseExample {
+        top: 39px;
+        right: 0px;
+        width: 280px;
+    }
+}
+
+@media (max-width: 800px) {
+    .producto {
+        height: 300px;
+    }
+
+    #contenedor_btn button {
+        height: 60px;
+    }
+
+}
+
+/*ITEM DE CARRO*/
+.cont_img_carro {
+    height: 90px;
+    width: 100%;
+}
+
+.cont_img_carro img {
+    height: 100%;
+    background-color: blue;
+}
+
+.item_info {
+    width: 50%;
+}
+
+.btn-close {
+    top: 0px;
+    right: 0px;
+    font-size: 0.8rem;
 }
