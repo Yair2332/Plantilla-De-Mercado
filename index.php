@@ -79,7 +79,7 @@ $resultado= $sql->fetchAll(PDO::FETCH_ASSOC);
               <div class="card card-body">
                 <!--Items de carro-->
                 <div class="card d-flex justify-content-center align-items-center position-relative"
-                  style="max-width: 100%;" onclick="rellenarModal(1)">
+                  style="max-width: 100%;">
                   <button type="button" class="btn-close position-absolute" aria-label="Close"></button>
                   <div class="row g-0 d-flex justify-content-center align-items-center">
                     <div class="cont_img_carro item_info">
@@ -196,13 +196,13 @@ $resultado= $sql->fetchAll(PDO::FETCH_ASSOC);
           <!--Producto-->
           <?php foreach($resultado as $row){ ?>
             <div class="col">
-              <div class="card producto" onclick="rellenarModal(<?php echo $row['id'] ?>)">
+              <div class="card producto" onclick="rellenarModal(<?php echo $row['id'] ?>) ">
                 <div class="cont_img">
-                  <img class="img_producto" id="img_product_<?php echo $row['id'] ?>" src="./assets/collection/pro_<?php echo $row['id'] ?>/img1.png" alt="">
+                  <img class="img_producto" src="./assets/collection/pro_<?php echo $row['id'] ?>/img1.png" alt="">
                 </div>
                 <div class="card-body">
-                  <p class="card-text text-center" id="nom_product_<?php echo $row['id'] ?>"><?php echo $row['nombre'] ?></p>
-                  <p class="card-text text-center" id="valor_product_<?php echo $row['id'] ?>">$<?php echo $row['valor'] ?></p>
+                  <p class="card-text text-center"><?php echo $row['nombre'] ?></p>
+                  <p class="card-text text-center">$<?php echo $row['valor'] ?></p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group w-100">
                       <button type="button" class="btn btn-sm btn-outline-primary">Ver</button>
@@ -214,24 +214,6 @@ $resultado= $sql->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <?php }; ?>
 
-
-          <div class="col">
-            <div class="card producto" onclick="rellenarModal(2)">
-              <div class="cont_img">
-                <img class="img_producto" id="img_product_2" src="./assets/collection/pro_2/img1.png" alt="">
-              </div>
-              <div class="card-body">
-                <p class="card-text text-center" id="nom_product_2">Wooden chair</p>
-                <p class="card-text text-center" id="valor_product_2">$65.00</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group w-100">
-                    <button type="button" class="btn btn-sm btn-outline-primary">Ver</button>
-                    <button type="button" class="btn btn-sm btn-outline-primary">Comprar</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
 
         </div>
@@ -252,42 +234,8 @@ $resultado= $sql->fetchAll(PDO::FETCH_ASSOC);
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
       aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <!--Nombre modal-->
-            <h1 class="modal-title fs-5 fw-bold" id="staticBackdropLabel">Modal title</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="cont_img">
-              <img class="img_producto" id="img_modal" src="" alt="">
-            </div>
-
-            <!--Botones modal-->
-            <div id="contenedor_btn">
-              <button class="cont_img"><img id="img_modal_1" class="img_producto" src="" alt=""></button>
-              <button class="cont_img"><img id="img_modal_2" class="img_producto" src="" alt=""></button>
-              <button class="cont_img"><img id="img_modal_3" class="img_producto" src="" alt=""></button>
-              <button class="cont_img"><img id="img_modal_4" class="img_producto" src="" alt=""></button>
-              <button class="cont_img"><img id="img_modal_5" class="img_producto" src="" alt=""></button>
-            </div>
-
-
-            <!--Introduccion a producto-->
-            <figure class="text-center">
-              <blockquote class="blockquote">
-                <p id="descripcion_modal">A well-known quote, contained in a blockquote element.</p>
-              </blockquote>
-            </figure>
-          </div>
-
-          <div class="modal-footer d-flex justify-content-between align-items-center">
-            <p class="fw-bold fs-5" id="valor_modal"></p>
-            <div>
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Understood</button>
-            </div>
-          </div>
+        <div class="modal-content" id="modal">
+          
         </div>
       </div>
     </div>
