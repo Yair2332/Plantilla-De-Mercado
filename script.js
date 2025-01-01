@@ -29,10 +29,10 @@ function cargarImagenes(id_produc) {
 }
 
 function cargarDatos(id_produc) {
-    let nom_product = document.getElementById("nom_product_1").textContent
+    let nom_product = document.getElementById("nom_product_" + id_produc).textContent
     document.getElementById("staticBackdropLabel").textContent = nom_product
 
-    let valor_product = document.getElementById("valor_product_1").textContent
+    let valor_product = document.getElementById("valor_product_" + id_produc).textContent
     document.getElementById("valor_modal").textContent = valor_product
 }
 

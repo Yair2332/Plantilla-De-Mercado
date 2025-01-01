@@ -1,3 +1,15 @@
+<?php 
+
+require './php/conexion.php';
+$db= new Database();
+$con= $db->conexion();
+
+$sql= $con->prepare("SELECT * FROM producto");
+$sql->execute();
+$resultado= $sql->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -182,23 +194,25 @@
         <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-2">
 
           <!--Producto-->
-          <div class="col">
-            <div class="card producto" onclick="rellenarModal(1)">
-              <div class="cont_img">
-                <img class="img_producto" id="img_product_1" src="./assets/collection/pro_1/img1.png" alt="">
-              </div>
-              <div class="card-body">
-                <p class="card-text text-center" id="nom_product_1">Wooden chair</p>
-                <p class="card-text text-center" id="valor_product_1">$65.00</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group w-100">
-                    <button type="button" class="btn btn-sm btn-outline-primary">Ver</button>
-                    <button type="button" class="btn btn-sm btn-outline-primary">Comprar</button>
+          <?php foreach($resultado as $row){ ?>
+            <div class="col">
+              <div class="card producto" onclick="rellenarModal(<?php echo $row['id'] ?>)">
+                <div class="cont_img">
+                  <img class="img_producto" id="img_product_<?php echo $row['id'] ?>" src="./assets/collection/pro_<?php echo $row['id'] ?>/img1.png" alt="">
+                </div>
+                <div class="card-body">
+                  <p class="card-text text-center" id="nom_product_<?php echo $row['id'] ?>"><?php echo $row['nombre'] ?></p>
+                  <p class="card-text text-center" id="valor_product_<?php echo $row['id'] ?>">$<?php echo $row['valor'] ?></p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group w-100">
+                      <button type="button" class="btn btn-sm btn-outline-primary">Ver</button>
+                      <button type="button" class="btn btn-sm btn-outline-primary">Comprar</button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+            <?php }; ?>
 
 
           <div class="col">
