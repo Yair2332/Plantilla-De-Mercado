@@ -2,9 +2,10 @@
 require 'conexion.php';
 $db = new Database();
 $con = $db->conexion();
-$idProducto = $_GET['id'];
 
-if ($idProducto != null) {
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    $idProducto = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+
     $sql = $con->prepare("SELECT * FROM producto WHERE id = $idProducto");
     $sql->execute();
     $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -53,4 +54,6 @@ if ($idProducto != null) {
         </div>
     </div>';
     }
+
+    $con = null; 
 };
