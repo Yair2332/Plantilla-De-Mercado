@@ -9,8 +9,8 @@ function rellenarModal(id_produc, token) {
             console.error('Error:', error);
         });
 
-    
-    console.log("Holaaaaaaaaaaaaaaaaa");
+
+  
 
 
     let btn_modal = document.getElementById("btn_modal")
@@ -25,3 +25,32 @@ function cambiarImagenModal(id_produc, id_imagen) {
     document.getElementById("img_modal").src = "./assets/collection/pro_" + id_produc + "/img" + id_imagen + ".png"
 
 }
+
+
+
+
+function agregarCarrito(id, token) {
+
+    let url = "./php/carrito.php"
+    let formData = new FormData()
+    formData.append('id', id);
+    formData.append('token', token);
+
+    fetch(url, {
+        method: 'POST',
+        body: formData,
+        mode: 'cors'
+    }).then(response => response.json())
+        .then(data => {
+            if (data.ok) {
+                let contador = document.getElementById("contador_carrito")
+                contador.innerHTML = data.numero
+            }
+        })
+
+    let btn_modal = document.getElementById("btn_modal")
+    btn_modal.click()
+
+}
+
+

@@ -1,13 +1,13 @@
-<?php 
+<?php
 require './php/config.php';
 require './php/conexion.php';
 
-$db= new Database();
-$con= $db->conexion();
+$db = new Database();
+$con = $db->conexion();
 
-$sql= $con->prepare("SELECT * FROM producto");
+$sql = $con->prepare("SELECT * FROM producto");
 $sql->execute();
-$resultado= $sql->fetchAll(PDO::FETCH_ASSOC);
+$resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -67,7 +67,7 @@ $resultado= $sql->fetchAll(PDO::FETCH_ASSOC);
 
           <div id="btn_carro" class="d-inline-flex gap-1 mx-1">
             <!--Boton de carrito-->
-            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+            <button onchange="contadorCarrito()" class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
               aria-expanded="false" aria-controls="collapseExample">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-dash"
                 viewBox="0 0 16 16">
@@ -75,6 +75,11 @@ $resultado= $sql->fetchAll(PDO::FETCH_ASSOC);
                 <path
                   d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
               </svg>
+
+              <!--Contador de carrito-->
+              <span id="contador_carrito" onchange="verificarContador()" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                0  
+            </span>
             </button>
             <div class="collapse" id="collapseExample">
               <div class="card card-body">
@@ -195,7 +200,7 @@ $resultado= $sql->fetchAll(PDO::FETCH_ASSOC);
         <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-2">
 
           <!--Producto-->
-          <?php foreach($resultado as $row){ ?>
+          <?php foreach ($resultado as $row) { ?>
             <div class="col">
               <div class="card producto" onclick="rellenarModal(<?php echo $row['id'] ?>, '<?php echo hash_hmac('sha512', $row['id'], KEY_TOKEN) ?>') ">
                 <div class="cont_img">
@@ -213,7 +218,7 @@ $resultado= $sql->fetchAll(PDO::FETCH_ASSOC);
                 </div>
               </div>
             </div>
-            <?php }; ?>
+          <?php }; ?>
 
 
 
@@ -236,7 +241,7 @@ $resultado= $sql->fetchAll(PDO::FETCH_ASSOC);
       aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content" id="modal">
-          
+
         </div>
       </div>
     </div>

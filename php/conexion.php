@@ -20,7 +20,6 @@ class Database
 
             $db = new PDO($conexion, $this->user_name, $this->password, $opcion);
             return $db;
-
         } catch (PDOException $e) {
             echo "Error al conectar con database -> " . $e;
         };

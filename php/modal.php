@@ -5,28 +5,28 @@ require 'conexion.php';
 $db = new Database();
 $con = $db->conexion();
 
-$idProducto= isset($_GET['id']) ? $_GET['id'] : '';
+$idProducto = isset($_GET['id']) ? $_GET['id'] : '';
 $token = isset($_GET['id']) ? $_GET['token'] : '';
 
-if(!empty($idProducto) && !empty($token)){
+if (!empty($idProducto) && !empty($token)) {
 
-    $token_temp= hash_hmac('sha512', $idProducto, KEY_TOKEN);
+    $token_temp = hash_hmac('sha512', $idProducto, KEY_TOKEN);
 
-if ($token_temp == $token) {
+    if ($token_temp == $token) {
 
 
-    $sql = $con->prepare("SELECT * FROM producto WHERE id = $idProducto");
-    $sql->execute();
-    $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+        $sql = $con->prepare("SELECT * FROM producto WHERE id = $idProducto");
+        $sql->execute();
+        $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 
-    if ($resultado > 0) {
-        $producto = $resultado[0]; 
-        $nombre = $producto['nombre'];
-        $id = $producto['id'];
-        $descripcion = $producto['descripcion'];
-        $valor = $producto['valor'];
+        if ($resultado > 0) {
+            $producto = $resultado[0];
+            $nombre = $producto['nombre'];
+            $id = $producto['id'];
+            $descripcion = $producto['descripcion'];
+            $valor = $producto['valor'];
 
-    echo '
+            echo '
     <div class="modal-header">
         <!--Nombre modal-->
         <h1 class="modal-title fs-5 fw-bold" id="staticBackdropLabel">' . $nombre . '</h1>
@@ -59,11 +59,13 @@ if ($token_temp == $token) {
         <p class="fw-bold fs-5" id="valor_modal"> $' . $valor . '</p>
         <div>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Understood</button>
+            <button type="button" class="btn btn-primary" onclick="agregarCarrito(' . $id . ', \'' . $token_temp . '\')">Agregar a carrito</button>
         </div>
     </div>';
-    }
+        }
 
-    $con = null; 
-};
+        $con = null;
+    };
+
+
 };
