@@ -1,10 +1,19 @@
 <?php
+
+require 'config.php';
 require 'conexion.php';
 $db = new Database();
 $con = $db->conexion();
 
-if (isset($_GET['id']) && !empty($_GET['id'])) {
-    $idProducto = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+$idProducto= isset($_GET['id']) ? $_GET['id'] : '';
+$token = isset($_GET['id']) ? $_GET['token'] : '';
+
+if(!empty($idProducto) && !empty($token)){
+
+    $token_temp= hash_hmac('sha512', $idProducto, KEY_TOKEN);
+
+if ($token_temp == $token) {
+
 
     $sql = $con->prepare("SELECT * FROM producto WHERE id = $idProducto");
     $sql->execute();
@@ -56,4 +65,5 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     }
 
     $con = null; 
+};
 };

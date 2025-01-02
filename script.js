@@ -1,6 +1,6 @@
-function rellenarModal(id_produc) {
+function rellenarModal(id_produc, token) {
 
-    fetch("./php/modal.php?id=" + id_produc)
+    fetch("./php/modal.php?id=" + id_produc + "&token=" + token)
         .then(response => response.text())
         .then(data => {
             document.getElementById("modal").innerHTML = data;

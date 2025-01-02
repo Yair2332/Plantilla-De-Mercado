@@ -1,6 +1,7 @@
 <?php 
-
+require './php/config.php';
 require './php/conexion.php';
+
 $db= new Database();
 $con= $db->conexion();
 
@@ -141,7 +142,7 @@ $resultado= $sql->fetchAll(PDO::FETCH_ASSOC);
                 <p class="opacity-75">Some representative placeholder content for the first slide of the carousel.</p>
                 <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
               </div>
-              <img src="./assets/img/slider3.png" alt="" class="img_banner">
+              <img src="./assets/img/slider2.png" alt="" class="img_banner">
             </div>
           </div>
         </div>
@@ -196,7 +197,7 @@ $resultado= $sql->fetchAll(PDO::FETCH_ASSOC);
           <!--Producto-->
           <?php foreach($resultado as $row){ ?>
             <div class="col">
-              <div class="card producto" onclick="rellenarModal(<?php echo $row['id'] ?>) ">
+              <div class="card producto" onclick="rellenarModal(<?php echo $row['id'] ?>, '<?php echo hash_hmac('sha512', $row['id'], KEY_TOKEN) ?>') ">
                 <div class="cont_img">
                   <img class="img_producto" src="./assets/collection/pro_<?php echo $row['id'] ?>/img1.png" alt="">
                 </div>
