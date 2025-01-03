@@ -65,9 +65,9 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 
           </div>
 
-          <div id="btn_carro" class="d-inline-flex gap-1 mx-1">
+          <div id="btn_carro" class="d-inline-flex gap-1 mx-1" onclick="cargarHistorialCarrito() ">
             <!--Boton de carrito-->
-            <button onchange="contadorCarrito()" class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
               aria-expanded="false" aria-controls="collapseExample">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-dash"
                 viewBox="0 0 16 16">
@@ -77,27 +77,14 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
               </svg>
 
               <!--Contador de carrito-->
-              <span id="contador_carrito" onchange="verificarContador()" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              <span id="contador_carrito" onchange="verificarContador()" class="position-absolute translate-middle badge rounded-pill bg-danger">
                 0  
             </span>
             </button>
             <div class="collapse" id="collapseExample">
-              <div class="card card-body">
+              <div class="card p-1">
                 <!--Items de carro-->
-                <div class="card d-flex justify-content-center align-items-center position-relative"
-                  style="max-width: 100%;">
-                  <button type="button" class="btn-close position-absolute" aria-label="Close"></button>
-                  <div class="row g-0 d-flex justify-content-center align-items-center">
-                    <div class="cont_img_carro item_info">
-                      <img src="./assets/collection/pro_1/img1.png" class="img-fluid rounded-start img_carro" alt="...">
-                    </div>
-                    <div class="item_info">
-                      <div class="card-body">
-                        <h5 class="card-title fs-6">Wooden chair</h5>
-                        <p class="card-text">$65.00</p>
-                      </div>
-                    </div>
-                  </div>
+                <div id="lista_item_carrito" class="card card-body border-0">
                 </div>
 
 

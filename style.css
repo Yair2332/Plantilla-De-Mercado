@@ -138,20 +138,6 @@ header {
     width: 256px;
 }
 
-@media (max-width: 992px) {
-    #btn_carro {
-        z-index: 200;
-        position: absolute;
-        bottom: -50px;
-        right: 9px;
-    }
-
-    #collapseExample {
-        top: 39px;
-        right: 0px;
-        width: 280px;
-    }
-}
 
 @media (max-width: 800px) {
     .producto {
@@ -166,7 +152,7 @@ header {
 
 /*ITEM DE CARRO*/
 .cont_img_carro {
-    height: 70px;
+    height: 80px;
     width: 100%;
 }
 
@@ -186,3 +172,30 @@ header {
 }
 
 
+#contador_carrito{
+    position: relative;
+    top: 12px;
+    right: -5px;
+}
+
+
+@media (max-width: 992px) {
+    #btn_carro {
+        z-index: 200;
+        position: absolute;
+        bottom: -50px;
+        right: 9px;
+    }
+
+    #collapseExample {
+        top: 39px;
+        right: 0px;
+        width: 280px;
+    }
+
+
+    #contador_carrito {
+        top: 2px;
+        right: 20px;
+    }
+}

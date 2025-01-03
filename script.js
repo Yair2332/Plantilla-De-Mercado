@@ -16,7 +16,7 @@ function rellenarModal(id_produc, token) {
     let btn_modal = document.getElementById("btn_modal")
     btn_modal.click()
 
-
+    cargarHistorialCarrito() 
 }
 
 
@@ -50,7 +50,23 @@ function agregarCarrito(id, token) {
 
     let btn_modal = document.getElementById("btn_modal")
     btn_modal.click()
+    cargarHistorialCarrito() 
+   
 
 }
 
+
+function cargarHistorialCarrito() {
+
+    fetch("./php/historial_carrito.php")
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById("lista_item_carrito").innerHTML = data;
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
+
+}
 

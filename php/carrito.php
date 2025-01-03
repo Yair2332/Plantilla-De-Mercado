@@ -1,7 +1,6 @@
 <?php
 
 require 'config.php';
-require 'conexion.php';
 
 $id = isset($_POST['id']) ? $_POST['id'] : '';
 $token = isset($_POST['token']) ? $_POST['token'] : ''; 
@@ -27,6 +26,5 @@ if (!empty($id) && !empty($token)) {
 }else{
     $datos['ok']=false;
 };
-
 
 echo json_encode($datos);

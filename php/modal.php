@@ -6,7 +6,7 @@ $db = new Database();
 $con = $db->conexion();
 
 $idProducto = isset($_GET['id']) ? $_GET['id'] : '';
-$token = isset($_GET['id']) ? $_GET['token'] : '';
+$token = isset($_GET['token']) ? $_GET['token'] : '';
 
 if (!empty($idProducto) && !empty($token)) {
 
@@ -67,5 +67,5 @@ if (!empty($idProducto) && !empty($token)) {
         $con = null;
     };
 
-
+    
 };
