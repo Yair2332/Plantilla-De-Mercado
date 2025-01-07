@@ -9,7 +9,12 @@ if (!empty($id) && !empty($token)) {
 
     $token_temp = hash_hmac('sha512', $id, KEY_TOKEN);
 
-    if ($token_temp == $token) {
+    if ($token_temp == $token) {  
+        
+        
+        if (!isset($_SESSION['carrito']['productos']) || !is_array($_SESSION['carrito']['productos'])) {
+            $_SESSION['carrito']['productos'] = []; 
+        }
 
         if(isset($_SESSION['carrito']['productos'][$id])){
             $_SESSION['carrito']['productos'][$id]+=1;
@@ -17,8 +22,11 @@ if (!empty($id) && !empty($token)) {
             $_SESSION['carrito']['productos'][$id]=1;
         }
 
-        $datos['numero'] = count($_SESSION['carrito']['productos']);
-        $datos['ok']= true;
+      
+        $numero = count($_SESSION['carrito']['productos']); 
+
+        $datos['numero'] = $numero;
+        $datos['ok'] = true;
 
     }else{
         $datos['ok']=false;

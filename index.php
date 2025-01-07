@@ -9,6 +9,16 @@ $sql = $con->prepare("SELECT * FROM producto");
 $sql->execute();
 $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 
+
+if (isset($_SESSION['carrito']['productos']) && is_array($_SESSION['carrito']['productos'])) {
+    $numero = count($_SESSION['carrito']['productos']);
+} else {
+    $numero = 0; 
+}
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +41,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
       <nav class="navbar navbar-expand-lg rounded" aria-label="Eleventh navbar example">
         <div class="container-fluid">
           <!--Nombre de tienda-->
+          <img src="https://i0.wp.com/www.sitemarca.com/wp-content/uploads/2019/05/primary-blue.png" alt="" id="img_logo">
           <a class="navbar-brand" href="#">Tienda Online</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09"
             aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
@@ -77,14 +88,14 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
               </svg>
 
               <!--Contador de carrito-->
-              <span id="contador_carrito" onchange="verificarContador()" class="position-absolute translate-middle badge rounded-pill bg-danger">
-                0  
+              <span id="contador_carrito" onchange="cargarHistorialCarrito()" class="position-absolute translate-middle badge rounded-pill bg-danger">
+                <?php echo $numero;?>
             </span>
             </button>
             <div class="collapse" id="collapseExample">
-              <div class="card p-1">
+              <div class="card p-2">
                 <!--Items de carro-->
-                <div id="lista_item_carrito" class="card card-body border-0">
+                <div id="lista_item_carrito" class="card card-body border-0 p-0">
                 </div>
 
 

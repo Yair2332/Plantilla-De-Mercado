@@ -23,7 +23,7 @@ if ($productos != null) {
             echo '
             <div class="card d-flex justify-content-center align-items-center position-relative mb-1"
                  style="max-width: 100%;">
-                <button type="button" class="btn-close position-absolute" aria-label="Close"></button>
+                <button type="button" class="btn-close position-absolute" aria-label="Close" onclick="eliminarProducto('.$id.')"></button>
                 <div class="row g-0 d-flex justify-content-center align-items-center w-100">
                     <div class="cont_img_carro item_info">
                         <img src="./assets/collection/pro_'.$id.'/img1.png" class="img-fluid rounded-start img_carro" alt="...">
@@ -44,7 +44,7 @@ if ($productos != null) {
     }
 }else {
   
-    echo "<p>Carro vacio</p>"; 
+    echo "<div class='alert alert-light text-center role='alert' '> Sin Productos </div>"; 
 }
 
 ?>

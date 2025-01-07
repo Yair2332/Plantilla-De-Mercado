@@ -23,6 +23,10 @@ header {
 
 /*SECCION DE BANNER*/
 
+#img_logo{
+    height: 40px;
+}
+
 .img_banner {
     height: 280px;
 }
@@ -139,16 +143,6 @@ header {
 }
 
 
-@media (max-width: 800px) {
-    .producto {
-        height: 300px;
-    }
-
-    #contenedor_btn button {
-        height: 60px;
-    }
-
-}
 
 /*ITEM DE CARRO*/
 .cont_img_carro {
@@ -178,6 +172,19 @@ header {
     right: -5px;
 }
 
+@media (max-width: 1400px) {
+    .producto .cont_img img {
+        height: 85%;
+    }
+}
+
+
+@media (max-width: 1200px) {
+    .producto .cont_img img {
+        height: auto;
+        width: 95%;
+    }
+}
 
 @media (max-width: 992px) {
     #btn_carro {
@@ -198,4 +205,62 @@ header {
         top: 2px;
         right: 20px;
     }
+
+    .producto .cont_img img {
+        height: 70%;
+        width: auto;
+    }
+}
+
+
+
+@media (max-width: 800px) {
+    .producto {
+        height: 300px;
+    }
+
+    #contenedor_btn button {
+        height: 60px;
+    }
+
+      .producto .cont_img img {
+        height: 100%;
+        width: auto;
+    }
+
+}
+
+
+
+.contenedor_lista{
+    max-width: 800px;
+}
+
+.cantidad{
+    display: flex;
+    margin-right: 20px;
+}
+
+
+.cantidad button{
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item_detalle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.detalles{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }

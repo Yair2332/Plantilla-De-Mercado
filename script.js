@@ -10,13 +10,13 @@ function rellenarModal(id_produc, token) {
         });
 
 
-  
+
 
 
     let btn_modal = document.getElementById("btn_modal")
     btn_modal.click()
 
-    cargarHistorialCarrito() 
+    cargarHistorialCarrito()
 }
 
 
@@ -50,8 +50,8 @@ function agregarCarrito(id, token) {
 
     let btn_modal = document.getElementById("btn_modal")
     btn_modal.click()
-    cargarHistorialCarrito() 
-   
+    cargarHistorialCarrito()
+
 
 }
 
@@ -59,14 +59,42 @@ function agregarCarrito(id, token) {
 function cargarHistorialCarrito() {
 
     fetch("./php/historial_carrito.php")
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById("lista_item_carrito").innerHTML = data;
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("lista_item_carrito").innerHTML = data;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
 
 
 }
 
+
+function eliminarProducto(productId) {
+    fetch('./php/eliminar_producto.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id: productId }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.ok) {
+
+                let contador = document.getElementById("contador_carrito")
+                contador.innerHTML = data.numero
+                const producto = document.querySelector(`[data-id="${productId}"]`);
+                if (producto) {
+                    producto.remove();
+                }
+            } else {
+                alert('No se pudo eliminar el producto.');
+            }
+
+
+        })
+        .catch(error => console.error('Error al eliminar el producto:', error));
+}
