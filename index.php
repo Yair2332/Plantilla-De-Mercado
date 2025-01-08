@@ -35,6 +35,8 @@ if (isset($_SESSION['carrito']['productos']) && is_array($_SESSION['carrito']['p
 
 <body>
 
+  <div class="sombra"></div>
+
   <!--Header/navegacion-->
   <header class="container-fluid">
     <div class="container">
@@ -100,7 +102,7 @@ if (isset($_SESSION['carrito']['productos']) && is_array($_SESSION['carrito']['p
 
 
                 <!--Boton de compra-->
-                <button type="button" class="btn btn-primary btn-sm mt-2">Comprar</button>
+                <a href="compra.php" type="button" class="btn btn-primary btn-sm mt-2">Comprar</a>
               </div>
             </div>
           </div>

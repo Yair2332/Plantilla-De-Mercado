@@ -98,3 +98,66 @@ function eliminarProducto(productId) {
         })
         .catch(error => console.error('Error al eliminar el producto:', error));
 }
+
+
+function cargarDetallesDeVenta() {
+
+    fetch("./php/detalles_carrito.php")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("productos_detalles").innerHTML = data;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
+        calcular_precio_final()
+}
+
+function toggleCardForm() {
+    const paymentMethod = document.getElementById('paymentMethod').value;
+    const cardForm = document.getElementById('cardForm');
+    cardForm.style.display = paymentMethod === 'card' ? 'block' : 'none';
+}
+
+
+
+function aumentarCarrito(id, accion) {
+    let url = "./php/aumentar_cantidad.php";
+    let formData = new FormData();
+    formData.append('id', id);
+    formData.append('accion', accion);
+
+    fetch(url, {
+        method: 'POST',
+        body: formData,
+        mode: 'cors',
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.ok) {
+            cargarDetallesDeVenta(); 
+        } else {
+            console.error('Error al procesar la acción');
+        }
+    })
+    .catch(error => console.error('Error:', error));
+
+    calcular_precio_final()
+}
+
+
+function calcular_precio_final() {
+    let url = "./php/precio_final.php";
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            if (data.ok) {
+                document.getElementById("precio_final").innerHTML = "Total: $" + data.final;
+            } else {
+                console.error('Error al calcular el precio final');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+}
